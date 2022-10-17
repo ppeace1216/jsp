@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+	//pageContext 객체 : 현재 페이지에 있는 객체에 대한 값을 저장하고 관리하는 객체	스코프가 가장 작다
+	//나중에 서블릿에서 만들때 아래와 같이
+	JspWriter pageOut = pageContext.getOut();	//jsp의 라이터 역할
+	System.out.println(pageOut == out);
+	
+	ServletRequest pageRequest = pageContext.getRequest();
+	System.out.println(pageRequest == request);
+	
+	ServletRequest pageResponse = pageContext.getResponse();
+	
+%>
+</body>
+</html>
