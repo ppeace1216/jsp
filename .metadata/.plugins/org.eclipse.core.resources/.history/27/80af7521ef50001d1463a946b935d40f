@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jsp - scope</title>
+</head>
+<body>
+<%
+	//강제 형변환을 해줘야 에러가 안난다
+	ArrayList<String> lst = (ArrayList<String>) request.getAttribute("lst");
+	HashSet<String> set = (HashSet<String>) request.getAttribute("set");
+	HashMap map = (HashMap) request.getAttribute("map");
+	
+	//List의 접근
+	for(int i=0;i<lst.size();i++){
+		out.println("<p>"+lst.get(i)+"</p>");
+	}
+	out.println("<hr>");
+	//Set의 접근
+	Iterator iter = set.iterator();
+	while(iter.hasNext()){
+		out.println("<p>"+iter.next()+"</p>");
+	}
+	out.println("<hr>");
+	//Map의 접근
+	/*Collection : List, Set, Map
+	Set<String> keys = map.keySet();	-키 불러오기
+	for(String key : keys){			-test1, test2, test3 ...
+		out.println(key);
+	}
+	*/
+	Collection<String> val = map.values();	//값만 불러오기
+	for(String name : val){
+		out.println("<p>"+name+"</p>");
+	}
+	
+	out.println("user id : "+application.getInitParameter("userId"));
+%>
+</body>
+</html>

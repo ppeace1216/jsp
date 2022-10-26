@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jsp - java 객체 제어</title>
+</head>
+<body>
+<%
+	List<String> lst = new ArrayList<>();
+	lst.add("고양이");
+	lst.add("강아지");
+	lst.add("햄스터");
+	lst.add("토끼");
+	request.setAttribute("lst", lst);		//목적지로 전송하기
+	
+	Set<String> set = HashSet<>();
+	set.add("김");
+	set.add("이");
+	set.add("박");
+	set.add("최");
+	request.setAttribute("set", set);
+	
+	Map<String> map = new HashMap();	//키 설정하기 때문에 <>생략
+	map.put("test1","핑크");
+	map.put("test1","그린");
+	map.put("test1","블랙");
+	map.put("test1","화이트");
+	request.setAttribute("map", map);
+	
+	//전송 받을 목적 페이지 지정
+	RequestDispatche rd = request.getRequestDispatcher("test07.jsp");
+	//해당 목적 페이지에 request.setAttribute()한 데이터를 포워딩(전달)
+	rd.forward(request, response);
+%>
+</body>
+</html>
